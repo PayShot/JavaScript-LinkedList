@@ -1,9 +1,8 @@
 /*
  *	Title 			: Linked List
  *	Author 			: Ramzi Komati 
- *	Last Modified	: Dec 5th, 2013
+ *	Last Modified	: Dec 10th, 2013
  */
-
 var LinkedList = function(array) 
 {
 	// Declare Linked List's attributes.
@@ -74,6 +73,23 @@ var LinkedList = function(array)
 			return true;
 		}
 	}
+
+	// Replace an item from a specified index.
+	// Return 'true' if the item has been altered.
+	this.replace = function(value, index) 
+	{
+		if(index > count || index < 0) 
+		{
+			return false;
+		}
+		else 
+		{
+			this.remove(index)
+			this.add(value, index)
+			return true;
+		}
+	}
+
 
 	// Return the first item of the linked list and remove it. 
 	// Return 'undefined' when list is empty.
