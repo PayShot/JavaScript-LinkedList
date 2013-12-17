@@ -1,8 +1,9 @@
 /*
- *	Title 			: Linked List
+ *	Title 			: JavaScript Linked List
  *	Author 			: Ramzi Komati 
- *	Last Modified	: Dec 10th, 2013
+ *	Last Modified	: Dec 17th, 2013
  */
+
 var LinkedList = function(array) 
 {
 	// Declare Linked List's attributes.
@@ -39,20 +40,20 @@ var LinkedList = function(array)
 		else 
 		{
 			var i = 0;
-			var current = first, previous;
+			var current = first, previous, next;
 			var node = new Node(value);
 
 			if(first == null) 
 			{
-				first = last = node
+				first = last = node;
 			}
 			else 
 			{
 				if(index === 0) 
 				{
 					// Handle special case - first node
-					previous = node;
-					previous.next = current;
+					node.next = first;
+					first = node;
 				}
 				else 
 				{
@@ -74,7 +75,7 @@ var LinkedList = function(array)
 		}
 	}
 
-	// Replace an item from a specified index.
+	// Alter an item from a specified index.
 	// Return 'true' if the item has been altered.
 	this.replace = function(value, index) 
 	{
@@ -84,8 +85,8 @@ var LinkedList = function(array)
 		}
 		else 
 		{
-			this.remove(index)
 			this.add(value, index)
+			this.remove(++index)
 			return true;
 		}
 	}
@@ -141,9 +142,9 @@ var LinkedList = function(array)
 	// Return 'undefined' if index outbound the list's length.
 	this.item = function(index) 
 	{
-		if(index < count) {
+		if(index < count ) {
 			var i = 0;
-			var current = first, previous;
+			var current = first;
 			
 			while(i++ < index) {
 				// Traverse the list until the i-th item is reached
